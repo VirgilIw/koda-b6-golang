@@ -9,6 +9,7 @@ import (
 )
 
 func ShowMenu(menu []model.Menu, keranjang *[]model.ItemKeranjang) {
+
 	for {
 
 		fmt.Println("\n== MENU UTAMA ==")
@@ -25,7 +26,6 @@ func ShowMenu(menu []model.Menu, keranjang *[]model.ItemKeranjang) {
 		switch pilihan {
 
 		case "1":
-			// Perbaikan: Tambah parameter keranjang
 			listfunction.ShowPizza(menu, keranjang)
 
 		case "2":
@@ -38,10 +38,11 @@ func ShowMenu(menu []model.Menu, keranjang *[]model.ItemKeranjang) {
 			listfunction.DeleteCart(keranjang)
 
 		case "5":
-			listfunction.Checkout(keranjang)
+			go listfunction.Checkout(keranjang)
+			fmt.Println("Checkout sedang diproses...")
 
 		case "6":
-			listfunction.ShowHistory()
+			go listfunction.ShowHistory()
 
 		case "7":
 			fmt.Println("Terima kasih!")
