@@ -1,8 +1,14 @@
 package listfunction
 
-import "fmt"
+import (
+	"fmt"
+)
 
 func ShowHistory() {
+
+	mu.Lock()
+	defer mu.Unlock()
+
 	if len(histori) == 0 {
 		fmt.Println("Histori kosong")
 		return
